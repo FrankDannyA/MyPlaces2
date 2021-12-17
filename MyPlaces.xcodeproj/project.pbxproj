@@ -84,8 +84,8 @@
 				E548292C276C5E8400007078 /* SceneDelegate.swift */,
 				E548293E276C642C00007078 /* MainTableViewController.swift */,
 				E5482930276C5E8400007078 /* Main.storyboard */,
-				E5482933276C5E8800007078 /* Assets.xcassets */,
 				E5482935276C5E8800007078 /* LaunchScreen.storyboard */,
+				E5482933276C5E8800007078 /* Assets.xcassets */,
 				E5482938276C5E8800007078 /* Info.plist */,
 			);
 			path = MyPlaces;
