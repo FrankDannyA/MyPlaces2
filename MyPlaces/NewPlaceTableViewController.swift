@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
     
-    var newPlace = Place()
+    var currentPlace: Place?
     var imageIsChanged = false
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -24,6 +24,7 @@ class NewPlaceTableViewController: UITableViewController {
 
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         tableView.tableFooterView = UIView()
+        setupEditScreen()
         
     }
 
@@ -72,7 +73,32 @@ class NewPlaceTableViewController: UITableViewController {
         dismiss(animated: true)
     }
     
-    func saveNewPlace(){
+    private func setupNavigationBar(){
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
+    }
+    
+    private func setupEditScreen(){
+        if currentPlace != nil {
+            setupNavigationBar()
+            imageIsChanged = true
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            
+            placeImage.image = image
+            placeImage.contentMode = .scaleAspectFill
+            
+            placeName.text = currentPlace?.name
+            placeLocation.text = currentPlace?.location
+            placeType.text = currentPlace?.type
+        }
+    }
+    
+    func savePlace(){
         
         var image: UIImage?
         
@@ -82,14 +108,24 @@ class NewPlaceTableViewController: UITableViewController {
             image = UIImage(named: "imagePlaceholder")
         }
         
-//        newPlace = Place(name: placeName.text!,
-//                         location: placeLocation.text,
-//                         type: placeType.text,
-//                         image: image,
-//                         restaraunrImage: nil)
+        let imageData = image?.pngData()
+        let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
+        
+            if currentPlace != nil {
+            
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+                }
+            } else {
+                StorageManager.saveObject(newPlace)
+        }
     }
-    
 }
+    
+
 
 //MARK: - Text field delegate
 
