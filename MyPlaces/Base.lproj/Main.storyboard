@@ -15,9 +15,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="z7u-Oe-I9v">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Date"/>
+                                <segment title="Name"/>
+                            </segments>
+                            <connections>
+                                <action selector="sortSelection:" destination="mND-sg-2hu" eventType="valueChanged" id="LsA-VY-fxS"/>
+                            </connections>
+                        </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="vJs-gR-ifq" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="85"/>
+                                <rect key="frame" x="0.0" y="76.5" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJs-gR-ifq" id="dsI-9Q-f58">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
@@ -78,12 +89,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="77X-lW-Rwe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.up.arrow.down.circle" catalog="system" id="L5v-R6-RTC">
+                            <connections>
+                                <action selector="reverseSorting:" destination="mND-sg-2hu" id="26d-Bc-yRp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="9j7-N6-5c4">
                             <connections>
                                 <segue destination="eUb-iP-h7c" kind="presentation" modalPresentationStyle="fullScreen" id="mso-av-jih"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reverseSortingButton" destination="L5v-R6-RTC" id="tFg-yz-1Yy"/>
+                        <outlet property="segmentedControll" destination="z7u-Oe-I9v" id="mcR-YV-Rk1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fl8-g8-VxF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -305,6 +325,7 @@
         <segue reference="ccQ-gO-cui"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="imagePlaceholder" width="170" height="170"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
