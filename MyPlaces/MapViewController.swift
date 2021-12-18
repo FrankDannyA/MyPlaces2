@@ -10,7 +10,7 @@ import MapKit
 
 class MapViewController: UIViewController {
 
-    var place: Place!
+    var place = Place()
     let annotatuinIdentifire = "annotatuinIdentifire"
     
     @IBOutlet weak var mapView: MKMapView!
