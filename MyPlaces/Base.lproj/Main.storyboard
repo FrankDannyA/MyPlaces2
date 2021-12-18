@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,11 +131,26 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ocg-8L-SP2">
                                                     <rect key="frame" x="0.0" y="4" width="414" height="242"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-ec-Ver">
+                                                    <rect key="frame" x="320" y="189" width="74" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="E3W-J8-hGV"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="GJJ-pi-cUM"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="JHC-G1-VAQ" kind="show" identifier="b" id="jET-Kt-A81"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ocg-8L-SP2" secondAttribute="trailing" id="89C-R0-3Gl"/>
+                                                <constraint firstItem="mIY-ec-Ver" firstAttribute="bottom" secondItem="Hy4-2s-G8T" secondAttribute="bottomMargin" id="IL3-ba-qF8"/>
                                                 <constraint firstItem="Ocg-8L-SP2" firstAttribute="top" secondItem="Hy4-2s-G8T" secondAttribute="top" constant="4" id="RIJ-Mo-wBK"/>
+                                                <constraint firstItem="mIY-ec-Ver" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hy4-2s-G8T" secondAttribute="leading" constant="20" symbolic="YES" id="RuK-Su-2Mc"/>
                                                 <constraint firstItem="Ocg-8L-SP2" firstAttribute="leading" secondItem="Hy4-2s-G8T" secondAttribute="leading" id="apM-FX-S2D"/>
+                                                <constraint firstItem="mIY-ec-Ver" firstAttribute="trailing" secondItem="Hy4-2s-G8T" secondAttribute="trailingMargin" id="odn-b1-w16"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ocg-8L-SP2" secondAttribute="bottom" constant="4" id="qm7-Zu-K2J"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -280,6 +296,36 @@
             </objects>
             <point key="canvasLocation" x="1491" y="177"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="NXy-AJ-Xk2">
+            <objects>
+                <viewController id="JHC-G1-VAQ" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gcs-Tn-ctf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="98t-ng-Ufk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5UI-jt-OmI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="98t-ng-Ufk" secondAttribute="bottom" id="Nrl-hx-LNN"/>
+                            <constraint firstItem="98t-ng-Ufk" firstAttribute="top" secondItem="Gcs-Tn-ctf" secondAttribute="top" id="S5J-LW-RUZ"/>
+                            <constraint firstItem="98t-ng-Ufk" firstAttribute="trailing" secondItem="5UI-jt-OmI" secondAttribute="trailing" id="nEr-QH-csu"/>
+                            <constraint firstItem="98t-ng-Ufk" firstAttribute="leading" secondItem="5UI-jt-OmI" secondAttribute="leading" id="qKU-xq-q7l"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="O1T-mo-FF0"/>
+                    <connections>
+                        <outlet property="mapView" destination="98t-ng-Ufk" id="RPc-cj-Slr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KHp-ad-ypZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2292.753623188406" y="176.78571428571428"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wRi-Id-fy8">
             <objects>
@@ -327,6 +373,7 @@
     <resources>
         <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="imagePlaceholder" width="170" height="170"/>
+        <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
