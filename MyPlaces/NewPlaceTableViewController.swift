@@ -27,6 +27,7 @@ class NewPlaceTableViewController: UITableViewController {
         setupEditScreen()
         
     }
+    
 
 //MARK: - Table view delegate
     
@@ -143,6 +144,18 @@ extension NewPlaceTableViewController : UITextFieldDelegate {
         } else {
             saveButton.isEnabled = false
         }
+    }
+    
+//MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "ShowMap" {
+            return
+        }
+        
+        let mapVC = segue.destination as! MapViewController
+        mapVC.place = currentPlace
+        
     }
 }
 
