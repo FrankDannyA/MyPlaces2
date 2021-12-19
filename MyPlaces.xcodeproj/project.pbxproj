@@ -19,6 +19,7 @@
 		E5482945276C803700007078 /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5482944276C803700007078 /* NewPlaceTableViewController.swift */; };
 		E5482947276C9C4900007078 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5482946276C9C4900007078 /* StorageManager.swift */; };
 		E5ED78E2276E2B900069D4E3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ED78E1276E2B900069D4E3 /* MapViewController.swift */; };
+		E5ED78E4276F44A50069D4E3 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ED78E3276F44A50069D4E3 /* MapManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E5482944276C803700007078 /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
 		E5482946276C9C4900007078 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		E5ED78E1276E2B900069D4E3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E5ED78E3276F44A50069D4E3 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				E5482944276C803700007078 /* NewPlaceTableViewController.swift */,
 				E5482946276C9C4900007078 /* StorageManager.swift */,
 				E5ED78E1276E2B900069D4E3 /* MapViewController.swift */,
+				E5ED78E3276F44A50069D4E3 /* MapManager.swift */,
 				E5482930276C5E8400007078 /* Main.storyboard */,
 				E5482935276C5E8800007078 /* LaunchScreen.storyboard */,
 				E5482933276C5E8800007078 /* Assets.xcassets */,
@@ -225,6 +228,7 @@
 				E548292B276C5E8400007078 /* AppDelegate.swift in Sources */,
 				E548293F276C642C00007078 /* MainTableViewController.swift in Sources */,
 				E5482947276C9C4900007078 /* StorageManager.swift in Sources */,
+				E5ED78E4276F44A50069D4E3 /* MapManager.swift in Sources */,
 				E5482943276C739300007078 /* PlaceModel.swift in Sources */,
 				E5482941276C700200007078 /* CustomTableViewCell.swift in Sources */,
 				E548292D276C5E8400007078 /* SceneDelegate.swift in Sources */,
