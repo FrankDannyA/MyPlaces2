@@ -143,14 +143,19 @@ extension NewPlaceTableViewController : UITextFieldDelegate {
 //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "ShowMap" { return }
+        guard
+            let identifire = segue.identifier,
+                let mapVC = segue.destination as? MapViewController
+        else { return}
         
-        let mapVC = segue.destination as! MapViewController
+        mapVC.incomeSegueIdentifire = identifire
+
+        if identifire == "ShowPlace"{
         mapVC.place.name = placeName.text!
         mapVC.place.location = placeLocation.text
         mapVC.place.type = placeType.text
         mapVC.place.imageData = placeImage.image?.pngData()
-        
+        }
     }
 }
 

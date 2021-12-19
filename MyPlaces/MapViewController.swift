@@ -14,15 +14,28 @@ class MapViewController: UIViewController {
     var place = Place()
     let locationManager = CLLocationManager()
     let annotatuinIdentifire = "annotatuinIdentifire"
+    var incomeSegueIdentifire = ""
+    let regionInMeters = 10000.00
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var adressLoabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
     }
+    
+    @IBAction func centerViewInUserLocation() {
+        showUserLocation()
+    }
+    
+    @IBAction func doneButtonPressed() {
+    }
+    
     
     private func setupPlacemark(){
         
@@ -45,6 +58,15 @@ class MapViewController: UIViewController {
             
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true)
+        }
+    }
+    
+    private func setupMapView() {
+        if incomeSegueIdentifire == "ShowPlace" {
+            adressLoabel.isHidden = true
+            doneButton.isHidden = true
+            mapPinImage.isHidden = true
+            setupPlacemark()
         }
     }
     
@@ -80,10 +102,18 @@ class MapViewController: UIViewController {
             break
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if incomeSegueIdentifire == "GetAdress" { showUserLocation() }
             break
         @unknown default:
             showAlert(title: "Ой", message: "Кажется в IOS добавли что- то новое, скоро и мы обновимся")
 
+        }
+    }
+    
+    private func showUserLocation(){
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters:  regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
         }
     }
     
