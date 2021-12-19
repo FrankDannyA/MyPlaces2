@@ -9,23 +9,28 @@ import UIKit
 import MapKit
 import CoreLocation
 
+protocol MapViewControllerDelegate {
+    func getAddress(_ address: String?)
+}
+
 class MapViewController: UIViewController {
 
     var place = Place()
     let locationManager = CLLocationManager()
+    var mapViewControllerDelegate: MapViewControllerDelegate?
     let annotatuinIdentifire = "annotatuinIdentifire"
     var incomeSegueIdentifire = ""
     let regionInMeters = 10000.00
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapPinImage: UIImageView!
-    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        adressLabel.text = ""
+        addressLabel.text = ""
         mapView.delegate = self
         setupMapView()
         checkLocationServices()
@@ -36,6 +41,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
+        mapViewControllerDelegate?.getAddress(addressLabel.text)
+        dismiss(animated: true)
     }
     
     
@@ -65,7 +72,7 @@ class MapViewController: UIViewController {
     
     private func setupMapView() {
         if incomeSegueIdentifire == "ShowPlace" {
-            adressLabel.isHidden = true
+            addressLabel.isHidden = true
             doneButton.isHidden = true
             mapPinImage.isHidden = true
             setupPlacemark()
@@ -177,11 +184,11 @@ extension MapViewController : MKMapViewDelegate {
             
             DispatchQueue.main.async {
                 if streetName != nil && buildNumber != nil {
-                self.adressLabel.text = "\(streetName!), \(buildNumber!)"
+                self.addressLabel.text = "\(streetName!), \(buildNumber!)"
                 } else if streetName != nil{
-                    self.adressLabel.text = "\(streetName!)"
+                    self.addressLabel.text = "\(streetName!)"
                 } else {
-                    self.adressLabel.text = ""
+                    self.addressLabel.text = ""
                 }
 
             }

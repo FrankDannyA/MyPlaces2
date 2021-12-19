@@ -149,6 +149,7 @@ extension NewPlaceTableViewController : UITextFieldDelegate {
         else { return}
         
         mapVC.incomeSegueIdentifire = identifire
+        mapVC.mapViewControllerDelegate = self
 
         if identifire == "ShowPlace"{
         mapVC.place.name = placeName.text!
@@ -181,4 +182,12 @@ extension NewPlaceTableViewController : UIImagePickerControllerDelegate, UINavig
         imageIsChanged = true
         dismiss(animated: true)
     }
+}
+
+extension NewPlaceTableViewController : MapViewControllerDelegate {
+    func getAddress(_ address: String?) {
+        placeLocation.text = address
+    }
+    
+    
 }

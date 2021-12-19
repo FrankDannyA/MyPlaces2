@@ -385,7 +385,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="O1T-mo-FF0"/>
                     <connections>
-                        <outlet property="adressLabel" destination="DV9-Nw-LJR" id="fkl-ik-e15"/>
+                        <outlet property="addressLabel" destination="DV9-Nw-LJR" id="fkl-ik-e15"/>
                         <outlet property="doneButton" destination="WFe-Zd-fZk" id="R9i-B1-JcO"/>
                         <outlet property="mapPinImage" destination="fog-OA-Tqp" id="UYN-Gs-6lA"/>
                         <outlet property="mapView" destination="98t-ng-Ufk" id="RPc-cj-Slr"/>
