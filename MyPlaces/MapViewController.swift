@@ -7,19 +7,21 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
 
     var place = Place()
+    let locationManager = CLLocationManager()
     let annotatuinIdentifire = "annotatuinIdentifire"
     
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupPlacemark()
         mapView.delegate = self
+        setupPlacemark()
+        checkLocationServices()
     }
     
     private func setupPlacemark(){
@@ -45,6 +47,52 @@ class MapViewController: UIViewController {
             self.mapView.selectAnnotation(annotation, animated: true)
         }
     }
+    
+    private func checkLocationServices() {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization(self.locationManager)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Ой", message: "Кажется вы забыли включить геолокацию")
+            }
+        }
+    }
+    
+    private func setupLocationManager(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    private func checkLocationAuthorization(_ manager: CLLocationManager){
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted:
+            showAlert(title: "Ой", message: "Кажется вы забыли включить геолокацию")
+            break
+        case .denied:
+            showAlert(title: "Ой", message: "Кажется вы забыли включить геолокацию")
+            break
+        case .authorizedAlways:
+            break
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            break
+        @unknown default:
+            showAlert(title: "Ой", message: "Кажется в IOS добавли что- то новое, скоро и мы обновимся")
+
+        }
+    }
+    
+    func showAlert(title: String?, message: String?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }
 
 extension MapViewController : MKMapViewDelegate {
@@ -69,5 +117,12 @@ extension MapViewController : MKMapViewDelegate {
         }
         
         return annotationView
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        checkLocationAuthorization(self.locationManager)
     }
 }

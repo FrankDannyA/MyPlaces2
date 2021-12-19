@@ -307,12 +307,24 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="98t-ng-Ufk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXf-ac-OZo">
+                                <rect key="frame" x="15" y="140" width="44.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="GGd-bH-Sdu"/>
+                                    <constraint firstAttribute="height" constant="50" id="RgW-mE-zEG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5UI-jt-OmI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5UI-jt-OmI" firstAttribute="trailing" secondItem="vXf-ac-OZo" secondAttribute="trailing" constant="354.5" id="6pN-JX-1sa"/>
+                            <constraint firstItem="vXf-ac-OZo" firstAttribute="top" secondItem="5UI-jt-OmI" secondAttribute="top" id="7GC-y2-Py0"/>
                             <constraint firstAttribute="bottom" secondItem="98t-ng-Ufk" secondAttribute="bottom" id="Nrl-hx-LNN"/>
                             <constraint firstItem="98t-ng-Ufk" firstAttribute="top" secondItem="Gcs-Tn-ctf" secondAttribute="top" id="S5J-LW-RUZ"/>
+                            <constraint firstItem="vXf-ac-OZo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5UI-jt-OmI" secondAttribute="leading" id="XCk-4f-cQy"/>
                             <constraint firstItem="98t-ng-Ufk" firstAttribute="trailing" secondItem="5UI-jt-OmI" secondAttribute="trailing" id="nEr-QH-csu"/>
                             <constraint firstItem="98t-ng-Ufk" firstAttribute="leading" secondItem="5UI-jt-OmI" secondAttribute="leading" id="qKU-xq-q7l"/>
                         </constraints>
@@ -373,6 +385,7 @@
     <resources>
         <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="imagePlaceholder" width="170" height="170"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
