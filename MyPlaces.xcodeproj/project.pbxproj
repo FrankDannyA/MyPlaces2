@@ -92,21 +92,61 @@
 		E5482929276C5E8400007078 /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				E548292A276C5E8400007078 /* AppDelegate.swift */,
-				E548292C276C5E8400007078 /* SceneDelegate.swift */,
-				E548293E276C642C00007078 /* MainTableViewController.swift */,
-				E5482940276C700200007078 /* CustomTableViewCell.swift */,
-				E5482942276C739300007078 /* PlaceModel.swift */,
-				E5482944276C803700007078 /* NewPlaceTableViewController.swift */,
-				E5482946276C9C4900007078 /* StorageManager.swift */,
-				E5ED78E1276E2B900069D4E3 /* MapViewController.swift */,
-				E5ED78E3276F44A50069D4E3 /* MapManager.swift */,
-				E5482930276C5E8400007078 /* Main.storyboard */,
-				E5482935276C5E8800007078 /* LaunchScreen.storyboard */,
+				E5ED78E9276F5D260069D4E3 /* SupportFieles */,
+				E5ED78E8276F5CF80069D4E3 /* Helpers */,
+				E5ED78E7276F5CD30069D4E3 /* Models */,
+				E5ED78E6276F5CC60069D4E3 /* View */,
+				E5ED78E5276F5C8D0069D4E3 /* Controllers */,
 				E5482933276C5E8800007078 /* Assets.xcassets */,
 				E5482938276C5E8800007078 /* Info.plist */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		E5ED78E5276F5C8D0069D4E3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E548293E276C642C00007078 /* MainTableViewController.swift */,
+				E5482944276C803700007078 /* NewPlaceTableViewController.swift */,
+				E5ED78E1276E2B900069D4E3 /* MapViewController.swift */,
+				E5482940276C700200007078 /* CustomTableViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E5ED78E6276F5CC60069D4E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5482930276C5E8400007078 /* Main.storyboard */,
+				E5482935276C5E8800007078 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E5ED78E7276F5CD30069D4E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5482942276C739300007078 /* PlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5ED78E8276F5CF80069D4E3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E5482946276C9C4900007078 /* StorageManager.swift */,
+				E5ED78E3276F44A50069D4E3 /* MapManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E5ED78E9276F5D260069D4E3 /* SupportFieles */ = {
+			isa = PBXGroup;
+			children = (
+				E548292C276C5E8400007078 /* SceneDelegate.swift */,
+				E548292A276C5E8400007078 /* AppDelegate.swift */,
+			);
+			path = SupportFieles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
